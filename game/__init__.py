@@ -1,5 +1,6 @@
 import pygame
 
+from game.cursor import Cursors
 from game.ball import Balls
 from game.brick import Bricks
 from game.player import Players
@@ -21,12 +22,13 @@ class Game(object):
         self.game_over = False
 
         self.all_sprites = pygame.sprite.Group()
+        self.cursor = pygame.sprite.Group()
         self.all_balls = pygame.sprite.Group()
         self.all_bricks = pygame.sprite.Group()
         self.all_players = pygame.sprite.Group()
         self.all_buttons = pygame.sprite.Group()
 
-
+        self.cursors = Cursors(self.all_sprites, self.cursor)
         self.balls = Balls(self.all_sprites, self.all_balls)
         self.bricks = Bricks(self.all_sprites, self.all_bricks)
         self.players = Players(self.all_sprites, self.all_players)
@@ -116,6 +118,7 @@ class Game(object):
         self.all_balls.update()
         self.all_players.update(self)
         self.all_buttons.update(self.all_players)
+        self.cursor.update()
         self.clock.tick(100)
 
 
