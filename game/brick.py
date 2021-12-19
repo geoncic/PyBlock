@@ -1,7 +1,7 @@
 import pygame
 import pygame.gfxdraw
 
-from constants import Constants
+from game.constants import Constants
 
 
 class Bricks(object):

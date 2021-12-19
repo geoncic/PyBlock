@@ -1,7 +1,7 @@
 import pygame
 import pygame.gfxdraw
-import time
-from constants import Constants
+# import time
+from game.constants import Constants
 
 
 

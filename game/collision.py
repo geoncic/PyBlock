@@ -1,5 +1,5 @@
 import pygame
-from constants import Constants
+from game.constants import Constants
 
 
 def check_collision(balls, bricks):

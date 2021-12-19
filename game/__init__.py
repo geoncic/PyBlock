@@ -1,11 +1,14 @@
 import pygame
 
-from ball import Balls
-from brick import Bricks
-from player import Players
-from constants import Constants
-from collision import check_collision
+from game.ball import Balls
+from game.brick import Bricks
+from game.player import Players
+from game.button import Buttons
+from game.constants import Constants
+from game.collision import check_collision
 
+pygame.init()
+gui_font = pygame.font.Font(None, 30)
 
 class Game(object):
     def __init__(self):
@@ -21,11 +24,13 @@ class Game(object):
         self.all_balls = pygame.sprite.Group()
         self.all_bricks = pygame.sprite.Group()
         self.all_players = pygame.sprite.Group()
+        self.all_buttons = pygame.sprite.Group()
 
 
         self.balls = Balls(self.all_sprites, self.all_balls)
         self.bricks = Bricks(self.all_sprites, self.all_bricks)
         self.players = Players(self.all_sprites, self.all_players)
+        self.buttons = Buttons(self.all_sprites, self.all_buttons)
 
 
     def reset(self):
@@ -110,6 +115,7 @@ class Game(object):
         # self.all_bricks.update()
         self.all_balls.update()
         self.all_players.update(self)
+        self.all_buttons.update(self.all_players)
         self.clock.tick(100)
 
 
@@ -122,3 +128,9 @@ class Game(object):
             self.all_bricks.draw(self.screen)
             self.all_balls.draw(self.screen)
             self.all_players.draw(self.screen)
+            self.all_buttons.draw(self.screen)
+            # Draw text
+            for button in self.all_buttons:
+                button.text_surf = gui_font.render(button.text, True, '#FFFFFF')
+                button.text_rect = button.text_surf.get_rect(center=button.rect.center)
+                self.screen.blit(button.text_surf,button.text_rect)

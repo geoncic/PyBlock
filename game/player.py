@@ -1,8 +1,8 @@
 import pygame
 import pygame.gfxdraw
 import math
-from constants import Constants
-from ball import Balls
+from game.constants import Constants
+from game.ball import Balls
 
 
 class Players(object):
