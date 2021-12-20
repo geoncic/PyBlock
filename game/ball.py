@@ -1,8 +1,6 @@
 import pygame
 import pygame.gfxdraw
-# import time
-from game.constants import Constants
-
+from constants import Constants
 
 
 class Balls(object):
@@ -11,7 +9,7 @@ class Balls(object):
         self.all_balls = all_balls
 
     def spawn_ball(self, pos, vel, team):
-        ## Todo: Figure out how to spawn multiple balls with some sort of delay
+        # Todo: Figure out how to spawn multiple balls with some sort of delay
         ball = Ball(pos, vel, team)
         self.all_sprites.add(ball)
         self.all_balls.add(ball)

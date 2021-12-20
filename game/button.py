@@ -1,6 +1,4 @@
 import pygame
-from game.constants import Constants
-
 
 
 class Buttons(object):
@@ -10,8 +8,8 @@ class Buttons(object):
 
         red_pos = (50, 100)
         blue_pos = (1050, 100)
-        yellow_pos = (50, 600)
-        green_pos = (1050, 600)
+        green_pos = (50, 600)
+        yellow_pos = (1050, 600)
         width = 100
         height = 50
         text = "Test"
@@ -38,7 +36,7 @@ class Button(pygame.sprite.Sprite):
     def __init__(self, text, width, height, pos, team):
         super().__init__()
         self.text = text
-        self.team = team
+        self.color = team
         self.rect = pygame.Rect(pos, (width, height))
         self.top_color = '#444444'
         self.file = 'button.png'
@@ -47,8 +45,8 @@ class Button(pygame.sprite.Sprite):
 
     def update(self, all_players):
         # Update player button with player ammo
-        for player in all_players:
-            if self.team == player.team:
-                self.text = str(player.ammo)
+        for p in all_players:
+            if self.color == p.color:
+                self.text = str(p.ammo)
             else:
                 pass
